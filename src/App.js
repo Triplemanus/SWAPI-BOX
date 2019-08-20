@@ -23,12 +23,12 @@ class App extends Component {
     // }))
     // .catch(error => this.setState({ error }))
 
-    // fetch('https://swapi.co/api/people')
-    // .then(response => response.json())
-    // .then(data => this.setState({
-    //   peopleData: data.results
-    // }))
-    // .catch(error => this.setState({ error }))
+    fetch('https://swapi.co/api/people')
+    .then(response => response.json())
+    .then(data => this.setState({
+      peopleData: data.results
+    }))
+    .catch(error => this.setState({ error }))
 
     // fetch('https://swapi.co/api/planets')
     // .then(response => response.json())
@@ -65,7 +65,7 @@ class App extends Component {
           <button>Vehicles</button>
         </nav>
         <section className="card-container">
-          <CardContainer />
+          <CardContainer peopleData={peopleData}/>
         </section>
       </main>
       )

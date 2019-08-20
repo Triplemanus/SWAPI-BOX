@@ -1,8 +1,12 @@
 import React from 'react';
+import Card from './Card'
 
-const CardContainer = () => {
+const CardContainer = ({ peopleData }) => {
+  const person = peopleData.map(person => {
+    return <Card name={person.name} species={person.species} />
+  })
   return (
-    <h2> Hello world!</h2>
+    person
   )
 }
 
