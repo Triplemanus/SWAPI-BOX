@@ -1,7 +1,9 @@
 .card-components {
   height: 85%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  margin: 10px 0;
   h2 {
     color: white;
     margin: auto;
