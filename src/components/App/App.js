@@ -11,6 +11,7 @@ class App extends Component {
     peopleData: [],
     planetData: [],
     vehicleData: [],
+    favoriteCards: [],
     error: ''
     }
   }
@@ -46,7 +47,7 @@ class App extends Component {
   }
 
   render () {
-   const { filmData, peopleData, planetData, vehicleData } = this.state;
+   const { filmData, peopleData, planetData, vehicleData, favoriteCards} = this.state;
     return (
       <main>
         <OpeningCrawl 
@@ -54,17 +55,22 @@ class App extends Component {
         date={filmData.release_date}
         episode={filmData.episode_id}
         text={filmData.opening_crawl}  />
-        <section>
-          <h1 className='star-wars-text'>SWAPI-BOX</h1>
-          <button className='favorites' img="">Favs <span className="favsCount" >0</span>
+        <section className='idk-change-later'>
+        <button className='show-movie star-wars-text'>
+          Show Movie Stuff
+        </button>
+          <h1 className='star-wars-text header'>SWAPI-BOX</h1>
+          <button className='favorites star-wars-text'>
+            Favorites 
+            <span> {favoriteCards.length}</span>
           </button>
         </section>
-        <nav className='star-wars-text'>
-          <button>People</button>
-          <button>Planets</button>
-          <button>Vehicles</button>
+        <nav>
+          <button className='star-wars-text nav_button'>People</button>
+          <button className='star-wars-text nav_button'>Planets</button>
+          <button className='star-wars-text nav_button'>Vehicles</button>
         </nav>
-        <section className="card-container">
+        <section>
           <CardContainer peopleData={peopleData}/>
         </section>
       </main>
