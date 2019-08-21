@@ -7,7 +7,7 @@ const CardContainer = ({ peopleData }) => {
     return <Card name={person.name} species={person.species} />
   })
   return (
-    <section className='card-container'>
+    <section className='card-components'>
       {person}
     </section>
   )
