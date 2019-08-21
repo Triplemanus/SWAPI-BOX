@@ -43,7 +43,8 @@ class App extends Component {
           // person.homeworld,
           // person.species,
           // person.birth_year, 
-          // null 
+          // null ,
+          // person.created
       // ] 
       // return clean
     // })
@@ -59,7 +60,8 @@ class App extends Component {
           // planet.terrain,
           // planet.population,
           // planet.climate, 
-          // planet.residents 
+          // planet.residents,
+          // planet.created
           //  ]
           // return clean
     // }))
@@ -74,7 +76,8 @@ class App extends Component {
           vehicle.model,
           vehicle.vehicle_class,
           vehicle.passengers, 
-          null 
+          null,
+          vehicle.created
         ]
         return clean
       })
