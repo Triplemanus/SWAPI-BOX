@@ -12,24 +12,34 @@ class App extends Component {
     planetData: [],
     vehicleData: [],
     favoriteCards: [],
+    landingPage: true,
     error: ''
     }
   }
 
-  componentDidMount() {
-    // fetch('https://swapi.co/api/films')
-    // .then(response => response.json())
-    // .then(data => this.setState({
-    //   filmData: data.results[0]
-    // }))
-    // .catch(error => this.setState({ error }))
+  hideLanding = () => {
+    this.setState({ landingPage: false })
+  }
 
-    fetch('https://swapi.co/api/people')
+  showLanding = () => {
+    this.setState({ landingPage: true })
+  }
+
+  componentDidMount() { 
+    const number =  Math.floor(Math.random() * (6 - 2 + 1)) + 1
+    fetch('https://swapi.co/api/films')
     .then(response => response.json())
     .then(data => this.setState({
-      peopleData: data.results
+      filmData: data.results[number]
     }))
     .catch(error => this.setState({ error }))
+
+    // fetch('https://swapi.co/api/people')
+    // .then(response => response.json())
+    // .then(data => this.setState({
+    //   peopleData: data.results
+    // }))
+    // .catch(error => this.setState({ error }))
 
     // fetch('https://swapi.co/api/planets')
     // .then(response => response.json())
@@ -47,22 +57,27 @@ class App extends Component {
   }
 
   render () {
-   const { filmData, peopleData, planetData, vehicleData, favoriteCards} = this.state;
+   const { filmData, peopleData, planetData, vehicleData, favoriteCards, landingPage} = this.state;
     return (
+    
       <main>
-        <OpeningCrawl 
-        title={filmData.title} 
-        date={filmData.release_date}
-        episode={filmData.episode_id}
-        text={filmData.opening_crawl}  />
+        {landingPage && 
+          <OpeningCrawl 
+          title={filmData.title} 
+          date={filmData.release_date}
+          episode={filmData.episode_id}
+          text={filmData.opening_crawl} 
+          hideLanding={this.hideLanding} />
+        }
+        {!landingPage && 
+        <>
         <section className='idk-change-later'>
-        <button className='show-movie star-wars-text'>
+        <button className='show-movie star-wars-text' onClick={this.showLanding}>
           Show Movie Stuff
         </button>
           <h1 className='star-wars-text header'>SWAPI-BOX</h1>
           <button className='favorites star-wars-text'>
-            Favorites 
-            <span> {favoriteCards.length}</span>
+            Favorites <span> {favoriteCards.length}</span>
           </button>
         </section>
         <nav>
@@ -73,6 +88,8 @@ class App extends Component {
         <section>
           <CardContainer peopleData={peopleData}/>
         </section>
+        </>
+        }
       </main>
       )
   }  
