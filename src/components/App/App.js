@@ -27,33 +27,59 @@ class App extends Component {
 
   componentDidMount() { 
     const number =  Math.floor(Math.random() * (6 - 2 + 1)) + 1
-    fetch('https://swapi.co/api/films')
-    .then(response => response.json())
-    .then(data => this.setState({
-      filmData: data.results[number]
-    }))
-    .catch(error => this.setState({ error }))
+    // fetch('https://swapi.co/api/films')
+    // .then(response => response.json())
+    // .then(data => this.setState({
+    //   filmData: data.results[number]
+    // }))
+    // .catch(error => this.setState({ error }))
 
     // fetch('https://swapi.co/api/people')
     // .then(response => response.json())
     // .then(data => this.setState({
-    //   peopleData: data.results
+    //   peopleData: data.results.map(person => {
+        // const clean = [
+          // person.name,
+          // person.homeworld,
+          // person.species,
+          // person.birth_year, 
+          // null 
+      // ] 
+      // return clean
+    // })
     // }))
     // .catch(error => this.setState({ error }))
 
     // fetch('https://swapi.co/api/planets')
     // .then(response => response.json())
     // .then(data => this.setState({
-    //   planetData: data.results
+    //   planetData: data.results.map(planet => {
+        // const clean = [
+          // planet.name,
+          // planet.terrain,
+          // planet.population,
+          // planet.climate, 
+          // planet.residents 
+          //  ]
+          // return clean
     // }))
     // .catch(error => this.setState({ error }))
 
-    // fetch('https://swapi.co/api/vehicles')
-    // .then(response => response.json())
-    // .then(data => this.setState({
-    //   vehicleData: data.results
-    // }))
-    // .catch(error => this.setState({ error }))
+    fetch('https://swapi.co/api/vehicles')
+    .then(response => response.json())
+    .then(data => this.setState({
+      vehicleData: data.results.map(vehicle => {
+        const clean = [
+          vehicle.name,
+          vehicle.model,
+          vehicle.vehicle_class,
+          vehicle.passengers, 
+          null 
+        ]
+        return clean
+      })
+    }))
+    .catch(error => this.setState({ error }))
   }
 
   render () {
@@ -86,7 +112,17 @@ class App extends Component {
           <button className='star-wars-text nav_button'>Vehicles</button>
         </nav>
         <section>
-          <CardContainer peopleData={peopleData}/>
+          {/* if people is clicked           */}
+          {/* <CardContainer data={peopleData}/> */}
+          
+          {/* if planets is clicked */}
+          {/* <CardContainer data={planetData}/> */}
+
+          
+          {/* if vehicles is clicked */}
+          <CardContainer data={vehicleData}/>
+
+
         </section>
         </>
         }
