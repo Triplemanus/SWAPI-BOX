@@ -55,11 +55,11 @@ class App extends Component {
         episode={filmData.episode_id}
         text={filmData.opening_crawl}  />
         <section>
-          <h1>SWAPI-BOX</h1>
+          <h1 className='star-wars-text'>SWAPI-BOX</h1>
           <button className='favorites' img="">Favs <span className="favsCount" >0</span>
           </button>
         </section>
-        <nav>
+        <nav className='star-wars-text'>
           <button>People</button>
           <button>Planets</button>
           <button>Vehicles</button>

@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+@font-face {font-family: "STARWARS";
+  src: url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.eot");
+  src: url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.eot?#iefix") format("embedded-opentype"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.woff") format("woff"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.ttf") format("truetype"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.svg#STARWARS") format("svg");
+}
+
 body {
   background: url('https://wallpaperplay.com/walls/full/c/6/4/17373.jpg');
   background-size: cover;
@@ -9,4 +17,9 @@ body {
   position: absolute;
   width: 100vw;
   height: 100%;
+}
+
+.star-wars-text {
+  font-family: 'STARWARS';
+  color: #ffd700;
 }
