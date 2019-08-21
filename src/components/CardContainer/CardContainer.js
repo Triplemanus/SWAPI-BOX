@@ -4,7 +4,7 @@ import './CardContainer.scss'
 
 const CardContainer = ({ data }) => {
   const card = data.map(datum => {
-    return <Card name={datum} key={datum[6]} />
+    return <Card datum={datum} key={datum[6]} />
   })
   return (
     <section className='card-components'>

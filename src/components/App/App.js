@@ -40,8 +40,8 @@ class App extends Component {
     //   peopleData: data.results.map(person => {
         // const clean = [
           // person.name,
-          // person.homeworld,
-          // person.species,
+          // Homeworld: person.homeworld,
+          // Species: person.species,
           // person.birth_year, 
           // null ,
           // person.created
@@ -73,9 +73,9 @@ class App extends Component {
       vehicleData: data.results.map(vehicle => {
         const clean = [
           vehicle.name,
-          vehicle.model,
-          vehicle.vehicle_class,
-          vehicle.passengers, 
+          `Model: ${vehicle.model}`,
+          `Class: ${vehicle.vehicle_class}`,
+          `Passengers: ${vehicle.passengers}`, 
           null,
           vehicle.created
         ]
