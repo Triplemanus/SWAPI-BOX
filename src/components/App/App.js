@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import OpeningCrawl from '../OpeningCrawl/OpeningCrawl';
 import CardContainer from '../CardContainer/CardContainer';
 
