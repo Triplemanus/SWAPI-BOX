@@ -1,0 +1,61 @@
+.App {
+  text-align: center;
+}
+
+@font-face {font-family: "STARWARS";
+  src: url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.eot");
+  src: url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.eot?#iefix") format("embedded-opentype"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.woff") format("woff"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.ttf") format("truetype"),
+  url("//db.onlinewebfonts.com/t/c00548f5d217ed324ae9096051927001.svg#STARWARS") format("svg");
+}
+
+body {
+  background: url('https://wallpaperplay.com/walls/full/c/6/4/17373.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+    .header {
+      font-size: 5rem;
+      text-align: center;
+      grid-area: 1 / 2 / 2 / 5;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+    }
+    .nav_button, .favorites, .show-movie {
+      height: 4rem;
+      width: 9rem;
+      font-size: 20px;
+      background-color: transparent;
+      margin: 5px 13px ;
+    }
+    .nav_button:hover, .favorites:hover, .show-movie:hover {
+      background-color: #000;
+      border-color: #ffd700;
+    }
+    .favorites {
+      grid-area: 1 / 5 / 2 / 6;
+      margin: 60px auto;
+    }
+    .show-movie {
+      grid-area: 1 / 1 / 2 / 2;
+      margin: 60px auto;
+    }
+}
+
+.idk-change-later {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+  grid-template-rows: .3fr; 
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+}
+
+.star-wars-text {
+  font-family: 'STARWARS';
+  color: #ffd700;
+}
