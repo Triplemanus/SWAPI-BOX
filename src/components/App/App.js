@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import OpeningCrawl from './OpeningCrawl';
-import CardContainer from './CardContainer';
+import OpeningCrawl from '../OpeningCrawl/OpeningCrawl';
+import CardContainer from '../CardContainer/CardContainer';
 
 class App extends Component {
   constructor() {
