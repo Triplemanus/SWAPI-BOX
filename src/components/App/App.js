@@ -124,8 +124,6 @@ class App extends Component {
           
           {/* if vehicles is clicked */}
           <CardContainer data={vehicleData}/>
-
-
         </section>
         </>
         }
