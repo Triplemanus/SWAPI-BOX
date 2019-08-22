@@ -26,13 +26,13 @@ class App extends Component {
   }
 
   componentDidMount() { 
-    // const number =  Math.floor(Math.random() * (6 - 2 + 1)) + 1
-    // fetch('https://swapi.co/api/films')
-    // .then(response => response.json())
-    // .then(data => this.setState({
-    //   filmData: data.results[number]
-    // }))
-    // .catch(error => this.setState({ error }))
+    const number =  Math.floor(Math.random() * (6 - 2 + 1)) + 1
+    fetch('https://swapi.co/api/films')
+    .then(response => response.json())
+    .then(data => this.setState({
+      filmData: data.results[number]
+    }))
+    .catch(error => this.setState({ error }))
 
     // fetch('https://swapi.co/api/people/')
     //  .then(response => response.json())
