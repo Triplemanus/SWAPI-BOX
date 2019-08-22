@@ -1,15 +1,16 @@
 import React from 'react';
 import './Card.scss';
 
-const Card = ({ name, species, homeworld}) => {
+const Card = ({ datum }) => {
   return (
     <article className='card'>
       <div className='card_content'>
-        <h3>{name}</h3>
+        <h3>{datum[0]}</h3>
         <button>Favorite me!</button>
-        <p>Homeworld: Tatooine</p>
-        <p>Species: {species}</p>
-        <p>Population: 100000</p>
+        <p>{datum[1]}</p>
+        <p>{datum[2]}</p>
+        <p>{datum[3]}</p>
+        <p>{datum[4]}</p>
       </div>
     </article>
   )
