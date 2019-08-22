@@ -56,6 +56,7 @@ class App extends Component {
     .then(response => response.json())
     .then(data => this.fetchResidents(data.results))
     .then(data => data.map(datum => {
+      console.log(datum)
           const clean = [
             datum.name,
             `Terrain: ${datum.terrain}`,
@@ -115,6 +116,27 @@ class App extends Component {
 //   });
 //   return Promise.all(promises);
 // };
+
+fetchResidents = (planets) => {
+  const allPlanets = planets.map(planet => {
+    let res = [];
+    planet.residents.map(resident => {
+      return fetch(resident)
+      .then(response => response.json())
+      .then(data => res.push(data.name))
+      .catch(error => this.setState({ error }))
+    });
+    console.log(res)
+    return {
+      name: planet.name,
+      terrain: planet.terrain,
+      population: planet.population,
+      climate: planet.climate,
+      residents: res
+    }
+  });
+  return allPlanets
+};
 
   render () {
    const { filmData, peopleData, planetData, vehicleData, favoriteCards, landingPage} = this.state;
