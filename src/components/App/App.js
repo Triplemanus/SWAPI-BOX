@@ -175,14 +175,10 @@ class App extends Component {
           </Link>
         </nav>
         <section>
-          {/* if people is clicked           */}
           <Route exact path='/people' render={() => <CardContainer data={peopleData} />}/>
           
-          {/* if planets is clicked */}
           <Route exact path='/planets' render={() => <CardContainer data={planetData} />}/>
 
-          
-          {/* if vehicles is clicked */}
           <Route exact path='/vehicles' render={() => <CardContainer data={vehicleData} />}/>
 
 
