@@ -53,39 +53,39 @@ class App extends Component {
     //  .then(peopleData => this.setState({ peopleData }))
     //  .catch(error => this.setState({ error }))
 
-    fetch('https://swapi.co/api/planets/')
-    .then(response => response.json())
-    .then(data => this.fetchResidents(data.results))
-    .then(data => data.map(datum => {
-      console.log(datum)
-          const clean = [
-            datum.name,
-            `Terrain: ${datum.terrain}`,
-            `Population: ${datum.population}`,
-            `Climate: ${datum.climate}`,
-            `Residents: ${datum.residents}`,
-          ]
-          return clean
-    }))
-    .then(planetData => this.setState({ planetData }))
-    .catch(error => this.setState({ error }))
-
-    // fetch('https://swapi.co/api/vehicles')
+    // fetch('https://swapi.co/api/planets/')
     // .then(response => response.json())
-    // .then(data => this.setState({
-    //   vehicleData: data.results.map(vehicle => {
-    //     const clean = [
-    //       vehicle.name,
-    //       `Model: ${vehicle.model}`,
-    //       `Class: ${vehicle.vehicle_class}`,
-    //       `Passengers: ${vehicle.passengers}`, 
-    //       null,
-    //       vehicle.created
-    //     ]
-    //     return clean
-    //   })
+    // .then(data => this.fetchResidents(data.results))
+    // .then(data => data.map(datum => {
+    //   console.log(datum)
+    //       const clean = [
+    //         datum.name,
+    //         `Terrain: ${datum.terrain}`,
+    //         `Population: ${datum.population}`,
+    //         `Climate: ${datum.climate}`,
+    //         `Residents: ${datum.residents}`,
+    //       ]
+    //       return clean
     // }))
+    // .then(planetData => this.setState({ planetData }))
     // .catch(error => this.setState({ error }))
+
+    fetch('https://swapi.co/api/vehicles')
+    .then(response => response.json())
+    .then(data => this.setState({
+      vehicleData: data.results.map(vehicle => {
+        const clean = [
+          vehicle.name,
+          `Model: ${vehicle.model}`,
+          `Class: ${vehicle.vehicle_class}`,
+          `Passengers: ${vehicle.passengers}`, 
+          null,
+          vehicle.created
+        ]
+        return clean
+      })
+    }))
+    .catch(error => this.setState({ error }))
   }
 
 //   fetchPeople = (people) => {
@@ -118,26 +118,26 @@ class App extends Component {
 //   return Promise.all(promises);
 // };
 
-fetchResidents = (planets) => {
-  const allPlanets = planets.map(planet => {
-    let res = [];
-    planet.residents.map(resident => {
-      return fetch(resident)
-      .then(response => response.json())
-      .then(data => res.push(data.name))
-      .catch(error => this.setState({ error }))
-    });
-    console.log(res)
-    return {
-      name: planet.name,
-      terrain: planet.terrain,
-      population: planet.population,
-      climate: planet.climate,
-      residents: res
-    }
-  });
-  return allPlanets
-};
+// fetchResidents = (planets) => {
+//   const allPlanets = planets.map(planet => {
+//     let res = [];
+//     planet.residents.map(resident => {
+//       return fetch(resident)
+//       .then(response => response.json())
+//       .then(data => res.push(data.name))
+//       .catch(error => this.setState({ error }))
+//     });
+//     console.log(res)
+//     return {
+//       name: planet.name,
+//       terrain: planet.terrain,
+//       population: planet.population,
+//       climate: planet.climate,
+//       residents: res
+//     }
+//   });
+//   return allPlanets
+// };
 
   render () {
    const { filmData, peopleData, planetData, vehicleData, favoriteCards, landingPage} = this.state;
@@ -165,12 +165,14 @@ fetchResidents = (planets) => {
         </section>
         <nav>
           <Link to='/people'>
-          <button className='star-wars-text nav_button'>People</button>
+            <button className='star-wars-text nav_button'>People</button>
           </Link>
           <Link to='/planets'>
-          <button className='star-wars-text nav_button'>Planets</button>
+            <button className='star-wars-text nav_button'>Planets</button>
           </Link>
-          <button className='star-wars-text nav_button'>Vehicles</button>
+          <Link to='/vehicles'>
+            <button className='star-wars-text nav_button'>Vehicles</button>
+          </Link>
         </nav>
         <section>
           {/* if people is clicked           */}
@@ -181,7 +183,8 @@ fetchResidents = (planets) => {
 
           
           {/* if vehicles is clicked */}
-          {/* <CardContainer data={vehicleData}/> */}
+          <Route exact path='/vehicles' render={() => <CardContainer data={vehicleData} />}/>
+
 
         </section>
         </>
