@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import OpeningCrawl from '../OpeningCrawl/OpeningCrawl';
 import CardContainer from '../CardContainer/CardContainer';
+import { Link, Route } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -34,40 +35,40 @@ class App extends Component {
     // }))
     // .catch(error => this.setState({ error }))
 
-    // fetch('https://swapi.co/api/people/')
-    //  .then(response => response.json())
-    //  .then(data => this.fetchPeople(data.results))
-    //  .then(data => this.fetchSpecies(data))
-    //  .then(data => data.map( datum => {
-    //     const clean = [
-    //       datum.name,
-    //       `Homeworld: ${datum.homeworld}`,
-    //       `Species: ${datum.species}`,
-    //       `Population: ${datum.population}`,
-    //       null,
-    //       datum.id
-    //     ]
-    //     return clean
-    //  }))
-    //  .then(peopleData => this.setState({ peopleData }))
-    //  .catch(error => this.setState({ error }))
+    fetch('https://swapi.co/api/people/')
+     .then(response => response.json())
+     .then(data => this.fetchPeople(data.results))
+     .then(data => this.fetchSpecies(data))
+     .then(data => data.map( datum => {
+        const clean = [
+          datum.name,
+          `Homeworld: ${datum.homeworld}`,
+          `Species: ${datum.species}`,
+          `Population: ${datum.population}`,
+          null,
+          datum.id
+        ]
+        return clean
+     }))
+     .then(peopleData => this.setState({ peopleData }))
+     .catch(error => this.setState({ error }))
 
-    fetch('https://swapi.co/api/planets/')
-    .then(response => response.json())
-    .then(data => this.fetchResidents(data.results))
-    .then(data => data.map(datum => {
-      console.log(datum)
-          const clean = [
-            datum.name,
-            `Terrain: ${datum.terrain}`,
-            `Population: ${datum.population}`,
-            `Climate: ${datum.climate}`,
-            `Residents: ${datum.residents}`,
-          ]
-          return clean
-    }))
-    .then(planetData => this.setState({ planetData }))
-    .catch(error => this.setState({ error }))
+    // fetch('https://swapi.co/api/planets/')
+    // .then(response => response.json())
+    // .then(data => this.fetchResidents(data.results))
+    // .then(data => data.map(datum => {
+    //   console.log(datum)
+    //       const clean = [
+    //         datum.name,
+    //         `Terrain: ${datum.terrain}`,
+    //         `Population: ${datum.population}`,
+    //         `Climate: ${datum.climate}`,
+    //         `Residents: ${datum.residents}`,
+    //       ]
+    //       return clean
+    // }))
+    // .then(planetData => this.setState({ planetData }))
+    // .catch(error => this.setState({ error }))
 
     // fetch('https://swapi.co/api/vehicles')
     // .then(response => response.json())
@@ -87,35 +88,35 @@ class App extends Component {
     // .catch(error => this.setState({ error }))
   }
 
-//   fetchPeople = (people) => {
-//     const promises = people.map(person => {
-//       return fetch(person.homeworld)
-//         .then(response => response.json())
-//         .then(data => ({
-//           homeworld: data.name,
-//           population: data.population,
-//           name: person.name,
-//           species: person.species
-//          }))
-//         .catch(error => console.log(error));
-//     });
-//     return Promise.all(promises);
-//   };
+  fetchPeople = (people) => {
+    const promises = people.map(person => {
+      return fetch(person.homeworld)
+        .then(response => response.json())
+        .then(data => ({
+          homeworld: data.name,
+          population: data.population,
+          name: person.name,
+          species: person.species
+         }))
+        .catch(error => console.log(error));
+    });
+    return Promise.all(promises);
+  };
 
 
-//  fetchSpecies = (people) => {
-//   const promises = people.map(person => {
-//     return fetch(person.species)
-//       .then(response => response.json())
-//       .then(data => ({
-//         ...person,
-//         id: person.created,
-//         species: data.name
-//       }))
-//       .catch(error => console.log(error));
-//   });
-//   return Promise.all(promises);
-// };
+ fetchSpecies = (people) => {
+  const promises = people.map(person => {
+    return fetch(person.species)
+      .then(response => response.json())
+      .then(data => ({
+        ...person,
+        id: person.created,
+        species: data.name
+      }))
+      .catch(error => console.log(error));
+  });
+  return Promise.all(promises);
+};
 
 fetchResidents = (planets) => {
   const allPlanets = planets.map(planet => {
@@ -163,20 +164,22 @@ fetchResidents = (planets) => {
           </button>
         </section>
         <nav>
+          <Link to='/people'>
           <button className='star-wars-text nav_button'>People</button>
+          </Link>
           <button className='star-wars-text nav_button'>Planets</button>
           <button className='star-wars-text nav_button'>Vehicles</button>
         </nav>
         <section>
           {/* if people is clicked           */}
-          {/* <CardContainer data={peopleData}/> */}
+          <Route exact path='/people' render={() => <CardContainer data={peopleData} />}/>
           
           {/* if planets is clicked */}
-          <CardContainer data={planetData}/>
+          {/* <CardContainer data={planetData}/> */}
 
           
           {/* if vehicles is clicked */}
-          <CardContainer data={vehicleData}/>
+          {/* <CardContainer data={vehicleData}/> */}
 
         </section>
         </>
