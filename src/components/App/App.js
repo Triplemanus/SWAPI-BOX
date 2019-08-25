@@ -176,8 +176,7 @@ fetchResidents = (planets) => {
 
           
           {/* if vehicles is clicked */}
-          {/* <CardContainer data={vehicleData}/> */}
-
+          <CardContainer data={vehicleData}/>
 
         </section>
         </>
