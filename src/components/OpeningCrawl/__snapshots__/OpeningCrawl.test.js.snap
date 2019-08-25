@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpeningCrawl should match a snapshot 1`] = `
+<article>
+  <Crawl
+    text={NaN}
+    title="Episode undefined"
+  />
+  <button
+    className="hide-movie"
+    onClick={[Function]}
+  >
+    Skip Movie Stuff
+  </button>
+</article>
+`;

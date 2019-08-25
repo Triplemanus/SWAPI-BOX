@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.scss';
 import OpeningCrawl from '../OpeningCrawl/OpeningCrawl';
 import CardContainer from '../CardContainer/CardContainer';
+import Card from '../Card/Card';
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -176,7 +177,8 @@ fetchResidents = (planets) => {
 
           
           {/* if vehicles is clicked */}
-          <CardContainer data={vehicleData}/>
+          {/* <CardContainer data={vehicleData}/> */}
+
 
         </section>
         </>
@@ -186,4 +188,3 @@ fetchResidents = (planets) => {
   }  
 }
 
-export default App;
