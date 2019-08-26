@@ -1,10 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+<<<<<<< HEAD
 exports[`OpeningCrawl should match snapshot 1`] = `
 <article>
   <Crawl
     subTitle="hello"
     text="long time agosomething"
+=======
+exports[`OpeningCrawl should match a snapshot 1`] = `
+<article>
+  <Crawl
+    text={NaN}
+>>>>>>> more-testing
     title="Episode undefined"
   />
   <button

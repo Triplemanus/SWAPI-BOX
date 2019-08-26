@@ -5,7 +5,8 @@ import CardContainer from '../CardContainer/CardContainer';
 import { Link, Route, Switch } from 'react-router-dom';
 import { NotFound } from '../NotFound/NotFound'
 import { Home } from '../Home/Home'
-class App extends Component {
+
+export default class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -191,4 +192,3 @@ class App extends Component {
   }  
 }
 
-export default App;

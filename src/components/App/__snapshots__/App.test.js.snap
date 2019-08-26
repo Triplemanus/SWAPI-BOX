@@ -7,3 +7,11 @@ exports[`App sholud match a snapshot 1`] = `
   />
 </main>
 `;
+
+exports[`App should match a snapshot 1`] = `
+<main>
+  <OpeningCrawl
+    hideLanding={[Function]}
+  />
+</main>
+`;
