@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.scss';
 import OpeningCrawl from '../OpeningCrawl/OpeningCrawl';
 import CardContainer from '../CardContainer/CardContainer';
-import { Link, Route } from 'react-router-dom';
-
+import { Link, Route, Switch } from 'react-router-dom';
+import { NotFound } from '../NotFound/NotFound'
+import { Home } from '../Home/Home'
 class App extends Component {
   constructor() {
     super();
@@ -175,11 +176,13 @@ class App extends Component {
           </Link>
         </nav>
         <section>
-          <Route exact path='/people' render={() => <CardContainer data={peopleData} />}/>
-          
-          <Route exact path='/planets' render={() => <CardContainer data={planetData} />}/>
-
-          <Route exact path='/vehicles' render={() => <CardContainer data={vehicleData} />}/>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/people' render={() => <CardContainer data={peopleData} />}/>
+            <Route exact path='/planets' render={() => <CardContainer data={planetData} />}/>
+            <Route exact path='/vehicles' render={() => <CardContainer data={vehicleData} />}/>
+            <Route component={NotFound} />
+          </Switch>
 
 
         </section>
