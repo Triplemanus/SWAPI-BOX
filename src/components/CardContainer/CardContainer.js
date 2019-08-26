@@ -4,10 +4,10 @@ import './CardContainer.scss'
 
 const CardContainer = ({ data }) => {
   const card = data.map(datum => {
-    return <Card datum={datum} key={datum[6]} />
+    return <Card datum={datum} key={datum[5]} favoriteStatus={data.updateFavoriteCard} />
   });
   return (
-    <section className='card-components'>
+    <section className='card-components' >
       {card}
     </section>
   )

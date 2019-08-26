@@ -28,6 +28,14 @@ export default class App extends Component {
     this.setState({ landingPage: true })
   }
 
+  updateFavoriteCard = (favoriteStatus) => {
+    if(!favoriteStatus[6]) {
+      this.setState({ favoriteCards: [...this.state.favoriteCards], favoriteStatus});
+    } else {
+      this.setState({ favoriteCards: this.state.favoriteCards.filter(card => card[5] !== favoriteStatus[5])});
+      favoriteStatus[6] = false;
+    } 
+  }
   componentDidMount() { 
     const number =  Math.floor(Math.random() * (6 - 2 + 1)) + 1
     fetch('https://swapi.co/api/films')
@@ -41,16 +49,17 @@ export default class App extends Component {
     //  .then(response => response.json())
     //  .then(data => this.fetchPeople(data.results))
     //  .then(data => this.fetchSpecies(data))
-    //  .then(data => data.map( datum => {
-    //     const clean = [
-    //       datum.name,
-    //       `Homeworld: ${datum.homeworld}`,
-    //       `Species: ${datum.species}`,
-    //       `Population: ${datum.population}`,
+    //  .then(data => data.map( people => {
+    //     const cleanData = [
+    //       people.name,
+    //       `Homeworld: ${people.homeworld}`,
+    //       `Species: ${people.species}`,
+    //       `Population: ${people.population}`,
     //       null,
-    //       datum.id
+    //       people.created,
+    //       false
     //     ]
-    //     return clean
+    //     return cleanData
     //  }))
     //  .then(peopleData => this.setState({ peopleData }))
     //  .catch(error => this.setState({ error }))
@@ -58,16 +67,18 @@ export default class App extends Component {
     // fetch('https://swapi.co/api/planets/')
     // .then(response => response.json())
     // .then(data => this.fetchResidents(data.results))
-    // .then(data => data.map(datum => {
-    //   console.log(datum)
-    //       const clean = [
-    //         datum.name,
-    //         `Terrain: ${datum.terrain}`,
-    //         `Population: ${datum.population}`,
-    //         `Climate: ${datum.climate}`,
-    //         `Residents: ${datum.residents}`,
+    // .then(data => data.map(planet => {
+    //   console.log(planet)
+    //       const cleanData = [
+    //         planet.name,
+    //         `Terrain: ${planet.terrain}`,
+    //         `Population: ${planet.population}`,
+    //         `Climate: ${planet.climate}`,
+    //         `Residents: ${planet.residents}`,
+              //  planet.created,
+              //  false
     //       ]
-    //       return clean
+    //       return cleanData
     // }))
     // .then(planetData => this.setState({ planetData }))
     // .catch(error => this.setState({ error }))
@@ -76,15 +87,16 @@ export default class App extends Component {
     .then(response => response.json())
     .then(data => this.setState({
       vehicleData: data.results.map(vehicle => {
-        const clean = [
+        const cleanData = [
           vehicle.name,
           `Model: ${vehicle.model}`,
           `Class: ${vehicle.vehicle_class}`,
           `Passengers: ${vehicle.passengers}`, 
           null,
-          vehicle.created
+          vehicle.created,
+          false
         ]
-        return clean
+        return cleanData
       })
     }))
     .catch(error => this.setState({ error }))
@@ -179,9 +191,9 @@ export default class App extends Component {
         <section>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/people' render={() => <CardContainer data={peopleData} />}/>
-            <Route exact path='/planets' render={() => <CardContainer data={planetData} />}/>
-            <Route exact path='/vehicles' render={() => <CardContainer data={vehicleData} />}/>
+            <Route exact path='/people' render={() => <CardContainer data={peopleData} favoriteStatus={this.updateFavoriteCard} />}/>
+            <Route exact path='/planets' render={() => <CardContainer data={planetData} favoriteStatus={this.updateFavoriteCard} />}/>
+            <Route exact path='/vehicles' render={() => <CardContainer data={vehicleData} favoriteStatus={this.updateFavoriteCard} />}/>
             <Route component={NotFound} />
           </Switch>
         </section>
