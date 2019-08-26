@@ -183,8 +183,6 @@ class App extends Component {
             <Route exact path='/vehicles' render={() => <CardContainer data={vehicleData} />}/>
             <Route component={NotFound} />
           </Switch>
-
-
         </section>
         </>
         }
