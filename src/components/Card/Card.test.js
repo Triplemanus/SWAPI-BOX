@@ -9,7 +9,7 @@ configure ({ adapter: new Adapter() });
 describe ('Card', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Card />)
+    wrapper = shallow(<Card data={data}/>)
   });
 
   it('renders without crashing', () => {

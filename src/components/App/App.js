@@ -57,7 +57,7 @@ export default class App extends Component {
     .then(response => response.json())
     .then(data => this.fetchResidents(data.results))
     .then(data => data.map(datum => {
-      console.log(datum)
+      console.log('Planets data is ', datum)
           const clean = [
             datum.name,
             `Terrain: ${datum.terrain}`,

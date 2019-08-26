@@ -3,19 +3,20 @@ import ReactDOM from 'react-dom';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import CardContainer from './CardContainer';
+import App from '../App/App';
 
 configure ({ adapter: new Adapter() });
 
 describe ('CardContainer', () => {
   let wrapper;
-  let testData = [{ name: 'Alderaan', population: '20000000', terrain: 'grasslands, mountains', climate: 'temperate', residents: [{ name: 'Luke Skywalker'}, { name: 'C3PO'}]}];
+  let testData = [{ name: 'Alderaan', population: '20000000', terrain: 'grasslands, mountains', climate: 'temperate', residents: ['Luke Skywalker', 'C3PO'], id:'100'}];
   beforeEach(() => {
-    wrapper = shallow(<CardContainer data={ testData}/>)
+    wrapper = shallow(<CardContainer data={ testData} key={Date.now()}/>)
   });
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<CardContainer data={testData} key={datum[6]}/>, div);
+    ReactDOM.render(<CardContainer data={testData} key={Date.now()}/>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 
