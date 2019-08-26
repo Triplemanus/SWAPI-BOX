@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardContainer should match snapshot 1`] = `
+<section
+  className="card-components"
+>
+  <Card
+    datum="somewhere"
+    key="e"
+  />
+  <Card
+    datum="over"
+  />
+  <Card
+    datum="the"
+  />
+  <Card
+    datum="rainbow"
+    key="w"
+  />
+  <Card
+    datum="stars"
+  />
+  <Card
+    datum="something"
+    key="i"
+  />
+  <Card
+    datum="words"
+  />
+</section>
+`;
