@@ -30,10 +30,12 @@ export default class App extends Component {
 
   updateFavoriteCard = (favoriteStatus) => {
     if(!favoriteStatus[6]) {
-      this.setState({ favoriteCards: [...this.state.favoriteCards], favoriteStatus});
+      favoriteStatus[6] = !favoriteStatus[6]
+      this.setState({ favoriteCards: [...this.state.favoriteCards, favoriteStatus]});
     } else {
-      this.setState({ favoriteCards: this.state.favoriteCards.filter(card => card[5] !== favoriteStatus[5])});
-      favoriteStatus[6] = false;
+      favoriteStatus[6] = !favoriteStatus[6];
+      const removeCard = this.state.favoriteCards.filter(card => card[5] !== favoriteStatus[5])
+      this.setState({ favoriteCards: removeCard });
     } 
   }
   componentDidMount() { 
@@ -68,7 +70,6 @@ export default class App extends Component {
     // .then(response => response.json())
     // .then(data => this.fetchResidents(data.results))
     // .then(data => data.map(planet => {
-    //   console.log(planet)
     //       const cleanData = [
     //         planet.name,
     //         `Terrain: ${planet.terrain}`,
@@ -141,7 +142,6 @@ export default class App extends Component {
 //       .then(data => res.push(data.name))
 //       .catch(error => this.setState({ error }))
 //     });
-//     console.log(res)
 //     return {
 //       name: planet.name,
 //       terrain: planet.terrain,
