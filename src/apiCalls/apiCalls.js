@@ -53,6 +53,7 @@ const fetchCalls = {
     });
     return Promise.all(promises);
   },
+
  fetchSpecies: (people) => {
   const promises = people.map(person => {
     return fetch(person.species)
@@ -66,6 +67,7 @@ const fetchCalls = {
   });
   return Promise.all(promises);
 }, 
+
 fetchResidents: (planets) => {
   const allPlanets = planets.map(planet => {
     let res = [];
