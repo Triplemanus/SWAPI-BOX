@@ -1,6 +1,10 @@
 # SWAPI-Box
 
-SWAPI-Box is a web application that uses the Star Wars API to tap into a “black hole” of Star Wars data. Mwahaha.
+SWAPI-Box is a web application that uses the Star Wars API to tap into a “black hole” of Star Wars data. Mwahaha. 
+
+The application loads with an opening scroll similar to the opening scroll of one randomly selected movie from the franchise, also playing the wonderful soundtrack from master composer John Williams.
+
+Clicking the "Skip Movie Stuff" button takes you to the main screen which shows the options for viewing the different categories of data. It also includes an option to select your favorites from each category and display them all together on one screen.
 
 
 ### Learning Goals
