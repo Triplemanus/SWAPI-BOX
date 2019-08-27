@@ -70,22 +70,22 @@ const fetchCalls = {
 
 fetchResidents: (planets) => {
   const allPlanets = planets.map(planet => {
-    let res = [];
-    planet.residents.map(resident => {
+    const residents = planet.residents.map(resident => {
       return fetch(resident)
       .then(response => response.json())
-      .then(data => res.push(data.name))
-      .catch(error => this.setState({ error }))
+      .then(data => data.name)
+      .catch(error => console.log({ error }))
     });
-    return {
-      name: planet.name,
-      terrain: planet.terrain,
-      population: planet.population,
-      climate: planet.climate,
-      residents: res
-    }
+    return Promise.all(residents)
+      .then(residents => ({
+        name: planet.name,
+        terrain: planet.terrain,
+        population: planet.population,
+        climate: planet.climate,
+        residents: residents
+      }))
   });
-  return allPlanets
+  return Promise.all(allPlanets)
   }
 }
 
