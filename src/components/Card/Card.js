@@ -1,6 +1,7 @@
 import React from 'react';
 import './Card.scss';
 import Star from "../../assets/star.svg" 
+import PropTypes from 'prop-types'
 
 const Card = ({ datum, favoriteStatus}) => {
   return (
@@ -20,3 +21,8 @@ const Card = ({ datum, favoriteStatus}) => {
 }
 
 export default Card;
+
+Card.propTypes = {
+  data: PropTypes.array.isRequired,
+  favoriteStatus: PropTypes.func.isRequired
+}
