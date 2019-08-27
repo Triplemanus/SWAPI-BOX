@@ -1,9 +1,10 @@
 import React from 'react';
 import Crawl from 'react-star-wars-crawl';
 import 'react-star-wars-crawl/lib/index.css';
+import './OpeningCrawl.scss'
+import PropTypes from 'prop-types'
 import './OpeningCrawl.scss';
 import $ from 'jquery';
-
 
 const OpeningCrawl = ({title, date, episode, text, hideLanding}) => {
   const romanNum = () => {
@@ -37,3 +38,11 @@ const OpeningCrawl = ({title, date, episode, text, hideLanding}) => {
 }
 
 export default OpeningCrawl;
+
+OpeningCrawl.propTypes = {
+  title: PropTypes.string.isRequired,
+  episode: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  hideLanding: PropTypes.func.isRequired
+}
