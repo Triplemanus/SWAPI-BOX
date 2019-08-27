@@ -29,6 +29,10 @@ The learning goals for this project are as follows:
 <img width="1424" alt="Screen Shot 2019-08-27 at 2 46 06 PM" src="https://user-images.githubusercontent.com/17992280/63809109-b49d1880-c8de-11e9-839f-00d1271d0996.png">
 
 
+### Authors:
+* Jon O'Drobinak ([Triplemanus](https://github.com/Triplemanus))
+* Aidan McKay ([JellyBeans1312](https://github.com/JellyBeans1312))
+
 ## Learn More
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
