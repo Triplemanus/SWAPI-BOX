@@ -48,10 +48,10 @@ export default class App extends Component {
     .catch(error => this.setState({ error }))
 
     fetch('https://swapi.co/api/people/')
-     .then(response => response.json())
-     .then(data => this.fetchPeople(data.results))
-     .then(data => this.fetchSpecies(data))
-     .then(data => data.map( people => {
+      .then(response => response.json())
+      .then(data => this.fetchPeople(data.results))
+      .then(data => this.fetchSpecies(data))
+      .then(data => data.map( people => {
         const cleanData = [
           people.name,
           `Homeworld: ${people.homeworld}`,
@@ -62,9 +62,9 @@ export default class App extends Component {
           false
         ]
         return cleanData
-     }))
-     .then(peopleData => this.setState({ peopleData }))
-     .catch(error => this.setState({ error }))
+      }))
+      .then(peopleData => this.setState({ peopleData }))
+      .catch(error => this.setState({ error }))
 
     fetch('https://swapi.co/api/planets/')
     .then(response => response.json())
@@ -76,8 +76,8 @@ export default class App extends Component {
             `Population: ${planet.population}`,
             `Climate: ${planet.climate}`,
             `Residents: ${planet.residents}`,
-               planet.created,
-               false
+              planet.created,
+              false
           ]
           return cleanData
     }))
@@ -112,14 +112,14 @@ export default class App extends Component {
           population: data.population,
           name: person.name,
           species: person.species
-         }))
+        }))
         .catch(error => console.log(error));
     });
     return Promise.all(promises);
   };
 
 
- fetchSpecies = (people) => {
+  fetchSpecies = (people) => {
   const promises = people.map(person => {
     return fetch(person.species)
       .then(response => response.json())
@@ -154,7 +154,7 @@ fetchResidents = (planets) => {
 };
 
   render () {
-   const { filmData, peopleData, planetData, vehicleData, favoriteCards, landingPage} = this.state;
+    const { filmData, peopleData, planetData, vehicleData, favoriteCards, landingPage} = this.state;
     return (
     
       <main>
@@ -203,7 +203,7 @@ fetchResidents = (planets) => {
         </>
         }
       </main>
-      )
+    )
   }  
 }
 

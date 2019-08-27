@@ -6,14 +6,18 @@
   background: rgba(155, 155, 155, .2);
   padding-left: 10px;
   color: white;
+  border: solid 3px rgb(204, 203, 203);
 }
 
 .card-title {
   height: 50px;
+  width: 90%;
   display: flex;
+  justify-content: space-between;
 }
 
 .star-card-button {
+  display: flex;
   height: 40px;
-  margin: auto;
+  margin-left: auto;
 }
