@@ -40,6 +40,13 @@ describe ('App', () => {
     Residents: 'me', 
   }
 
+  const mockVehicle = {
+    name: 'car',
+    Model: 'something',
+    Class: 'super',
+    Passengers: 50000000000, 
+  }
+
   beforeEach(() => {
     wrapper = shallow(<App />)
   });
@@ -90,6 +97,12 @@ describe ('App', () => {
     expect(wrapper.state('planetData')).toEqual([])
     wrapper.instance().setPlanets(mockPlanet)
     expect(wrapper.state('planetData')).toEqual(mockPlanet)
+  })
+
+  it('should set vehicles to state when setVehicles is called', () => {
+    expect(wrapper.state('vehicleData')).toEqual([])
+    wrapper.instance().setVehicles(mockVehicle)
+    expect(wrapper.state('vehicleData')).toEqual(mockVehicle)
   })
 
   // describe('Routes', () => {
