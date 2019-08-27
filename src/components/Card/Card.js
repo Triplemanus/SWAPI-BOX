@@ -13,11 +13,11 @@ const Card = ({ datum, favoriteStatus}) => {
           {datum[6] &&
             <img className="star-card-button" src={activeStar} alt="" onClick={() => favoriteStatus(datum)}/>}
       </div>
-      <div className='card_content'>
+      <div className='card_content residents'>
         <p>{datum[1]}</p>
         <p>{datum[2]}</p>
         <p>{datum[3]}</p>
-        <p className="residents">{datum[4]}</p>
+        <p className="residents" >{datum[4]}</p>
       </div>
     </article>
   )
