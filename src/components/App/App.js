@@ -43,30 +43,44 @@ export default class App extends Component {
   componentDidMount() { 
       const number =  Math.floor(Math.random() * (6 - 2 + 1)) + 1
       fetchCalls.fetchMovies()
-      .then(data => this.setState({
-        filmData: data.results[number]
-      }))
+      .then(data => this.setMovie(data.results[number]))
       .catch(error => this.setState({ error }))
 
       fetchCalls.fetchCharacters()
       .then(data => fetchCalls.fetchPeople(data.results))
       .then(data => fetchCalls.fetchSpecies(data))
       .then(data => cleaner.cleanPeople(data))
-      .then(peopleData => this.setState({ peopleData }))
+      .then(peopleData => this.setPeople(peopleData))
       .catch(error => this.setState({ error }))
 
 
       fetchCalls.fetchPlanets()
       .then(data => fetchCalls.fetchResidents(data.results))
       .then(data => cleaner.cleanPlanets(data))
-      .then(planetData => this.setState({ planetData }))
+      .then(planetData => this.setPlanets(planetData))
       .catch(error => this.setState({ error }))
 
 
       fetchCalls.fetchVehicles()
       .then(data => cleaner.cleanVehicles(data))
-      .then(vehicleData => this.setState({ vehicleData }))
+      .then(vehicleData => this.setVehicles(vehicleData))
       .catch(error => this.setState({ error }))
+  }
+
+  setMovie = (filmData) => {
+    this.setState({ filmData })
+  }
+
+  setPeople = (peopleData) => {
+    this.setState({ peopleData })
+  }
+
+  setPlanets = (planetData) => {
+    this.setState({ planetData })
+  }
+
+  setVehicles = (vehicleData) => {
+    this.setState({ vehicleData })
   }
 
   render () {
