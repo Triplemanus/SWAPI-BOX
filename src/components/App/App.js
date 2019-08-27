@@ -29,11 +29,13 @@ export default class App extends Component {
   }
 
   updateFavoriteCard = (favoriteStatus) => {
-    if(!favoriteStatus[6]) {
-      this.setState({ favoriteCards: [...this.state.favoriteCards], favoriteStatus});
+    if(!this.state.favoriteCards.includes(favoriteStatus)) {
+      favoriteStatus[6] = !favoriteStatus[6]
+      this.setState({ favoriteCards: [...this.state.favoriteCards, favoriteStatus]});
     } else {
-      this.setState({ favoriteCards: this.state.favoriteCards.filter(card => card[5] !== favoriteStatus[5])});
-      favoriteStatus[6] = false;
+      favoriteStatus[6] = !favoriteStatus[6];
+      const removeCard = this.state.favoriteCards.filter(card => card !== favoriteStatus)
+      this.setState({ favoriteCards: removeCard });
     } 
   }
   componentDidMount() { 
@@ -45,43 +47,42 @@ export default class App extends Component {
     }))
     .catch(error => this.setState({ error }))
 
-    // fetch('https://swapi.co/api/people/')
-    //  .then(response => response.json())
-    //  .then(data => this.fetchPeople(data.results))
-    //  .then(data => this.fetchSpecies(data))
-    //  .then(data => data.map( people => {
-    //     const cleanData = [
-    //       people.name,
-    //       `Homeworld: ${people.homeworld}`,
-    //       `Species: ${people.species}`,
-    //       `Population: ${people.population}`,
-    //       null,
-    //       people.created,
-    //       false
-    //     ]
-    //     return cleanData
-    //  }))
-    //  .then(peopleData => this.setState({ peopleData }))
-    //  .catch(error => this.setState({ error }))
+    fetch('https://swapi.co/api/people/')
+     .then(response => response.json())
+     .then(data => this.fetchPeople(data.results))
+     .then(data => this.fetchSpecies(data))
+     .then(data => data.map( people => {
+        const cleanData = [
+          people.name,
+          `Homeworld: ${people.homeworld}`,
+          `Species: ${people.species}`,
+          `Population: ${people.population}`,
+          null,
+          people.created,
+          false
+        ]
+        return cleanData
+     }))
+     .then(peopleData => this.setState({ peopleData }))
+     .catch(error => this.setState({ error }))
 
-    // fetch('https://swapi.co/api/planets/')
-    // .then(response => response.json())
-    // .then(data => this.fetchResidents(data.results))
-    // .then(data => data.map(planet => {
-    //   console.log(planet)
-    //       const cleanData = [
-    //         planet.name,
-    //         `Terrain: ${planet.terrain}`,
-    //         `Population: ${planet.population}`,
-    //         `Climate: ${planet.climate}`,
-    //         `Residents: ${planet.residents}`,
-              //  planet.created,
-              //  false
-    //       ]
-    //       return cleanData
-    // }))
-    // .then(planetData => this.setState({ planetData }))
-    // .catch(error => this.setState({ error }))
+    fetch('https://swapi.co/api/planets/')
+    .then(response => response.json())
+    .then(data => this.fetchResidents(data.results))
+    .then(data => data.map(planet => {
+          const cleanData = [
+            planet.name,
+            `Terrain: ${planet.terrain}`,
+            `Population: ${planet.population}`,
+            `Climate: ${planet.climate}`,
+            `Residents: ${planet.residents}`,
+               planet.created,
+               false
+          ]
+          return cleanData
+    }))
+    .then(planetData => this.setState({ planetData }))
+    .catch(error => this.setState({ error }))
 
     fetch('https://swapi.co/api/vehicles')
     .then(response => response.json())
@@ -102,56 +103,55 @@ export default class App extends Component {
     .catch(error => this.setState({ error }))
   }
 
-//   fetchPeople = (people) => {
-//     const promises = people.map(person => {
-//       return fetch(person.homeworld)
-//         .then(response => response.json())
-//         .then(data => ({
-//           homeworld: data.name,
-//           population: data.population,
-//           name: person.name,
-//           species: person.species
-//          }))
-//         .catch(error => console.log(error));
-//     });
-//     return Promise.all(promises);
-//   };
+  fetchPeople = (people) => {
+    const promises = people.map(person => {
+      return fetch(person.homeworld)
+        .then(response => response.json())
+        .then(data => ({
+          homeworld: data.name,
+          population: data.population,
+          name: person.name,
+          species: person.species
+         }))
+        .catch(error => console.log(error));
+    });
+    return Promise.all(promises);
+  };
 
 
-//  fetchSpecies = (people) => {
-//   const promises = people.map(person => {
-//     return fetch(person.species)
-//       .then(response => response.json())
-//       .then(data => ({
-//         ...person,
-//         id: person.created,
-//         species: data.name
-//       }))
-//       .catch(error => console.log(error));
-//   });
-//   return Promise.all(promises);
-// };
+ fetchSpecies = (people) => {
+  const promises = people.map(person => {
+    return fetch(person.species)
+      .then(response => response.json())
+      .then(data => ({
+        ...person,
+        id: person.created,
+        species: data.name
+      }))
+      .catch(error => console.log(error));
+  });
+  return Promise.all(promises);
+};
 
-// fetchResidents = (planets) => {
-//   const allPlanets = planets.map(planet => {
-//     let res = [];
-//     planet.residents.map(resident => {
-//       return fetch(resident)
-//       .then(response => response.json())
-//       .then(data => res.push(data.name))
-//       .catch(error => this.setState({ error }))
-//     });
-//     console.log(res)
-//     return {
-//       name: planet.name,
-//       terrain: planet.terrain,
-//       population: planet.population,
-//       climate: planet.climate,
-//       residents: res
-//     }
-//   });
-//   return allPlanets
-// };
+fetchResidents = (planets) => {
+  const allPlanets = planets.map(planet => {
+    let res = [];
+    planet.residents.map(resident => {
+      return fetch(resident)
+      .then(response => response.json())
+      .then(data => res.push(data.name))
+      .catch(error => this.setState({ error }))
+    });
+    return {
+      name: planet.name,
+      terrain: planet.terrain,
+      population: planet.population,
+      climate: planet.climate,
+      residents: res
+    }
+  });
+  return allPlanets
+};
 
   render () {
    const { filmData, peopleData, planetData, vehicleData, favoriteCards, landingPage} = this.state;
@@ -173,9 +173,11 @@ export default class App extends Component {
           Show Movie Stuff
         </button>
           <h1 className='star-wars-text header'>SWAPI-BOX</h1>
-          <button className='favorites star-wars-text'>
-            Favorites <span> {favoriteCards.length}</span>
-          </button>
+          <Link to='/favorites'>
+            <button className='favorites star-wars-text'>
+              Favorites <span> {favoriteCards.length}</span>
+            </button>
+          </Link>
         </section>
         <nav>
           <Link to='/people'>
@@ -194,6 +196,7 @@ export default class App extends Component {
             <Route exact path='/people' render={() => <CardContainer data={peopleData} favoriteStatus={this.updateFavoriteCard} />}/>
             <Route exact path='/planets' render={() => <CardContainer data={planetData} favoriteStatus={this.updateFavoriteCard} />}/>
             <Route exact path='/vehicles' render={() => <CardContainer data={vehicleData} favoriteStatus={this.updateFavoriteCard} />}/>
+            <Route exact path='/favorites' render={() => <CardContainer data={favoriteCards} favoriteStatus={this.updateFavoriteCard} />}/>
             <Route component={NotFound} />
           </Switch>
         </section>
