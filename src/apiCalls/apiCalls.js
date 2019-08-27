@@ -48,5 +48,24 @@ const fetchCalls = {
     }))
     .then(planetData => this.setState({ planetData }))
     .catch(error => this.setState({ error }))
-},
+  },
+  fetchVechicles: () => {
+    fetch('https://swapi.co/api/vehicles')
+    .then(response => response.json())
+    .then(data => this.setState({
+      vehicleData: data.results.map(vehicle => {
+      const cleanData = [
+        vehicle.name,
+        `Model: ${vehicle.model}`,
+        `Class: ${vehicle.vehicle_class}`,
+        `Passengers: ${vehicle.passengers}`, 
+        null,
+        vehicle.created,
+        false
+      ]
+      return cleanData
+      })
+    }))
+    .catch(error => this.setState({ error }))
+  }
 }
