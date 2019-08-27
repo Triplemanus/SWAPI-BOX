@@ -13,4 +13,22 @@ describe('apiCalls', () => {
     await fetchCalls.fetchMovies()
     expect(window.fetch).toHaveBeenCalledWith(url)
   });
+
+  it('should get people', async () => {
+    const url = 'https://swapi.co/api/people/'
+    await fetchCalls.fetchCharacters()
+    expect(window.fetch).toHaveBeenCalledWith(url)
+  });
+
+  it('should get planets', async () => {
+    const url = 'https://swapi.co/api/planets/'
+    await fetchCalls.fetchPlanets()
+    expect(window.fetch).toHaveBeenCalledWith(url)
+  });
+  
+  it('should get vehicles', async () => {
+    const url = 'https://swapi.co/api/vehicles'
+    await fetchCalls.fetchVehicles()
+    expect(window.fetch).toHaveBeenCalledWith(url)
+  });
 });
