@@ -1,8 +1,8 @@
-### SWAPI-Box
+## SWAPI-Box
 
 SWAPI-Box is a web application that uses the Star Wars API to tap into a “black hole” of Star Wars data. Mwahaha.
 
-## Learning Goals
+### Learning Goals
 
 The learning goals for this project are as follows:
 
@@ -16,7 +16,7 @@ The learning goals for this project are as follows:
 - Write tests for React components, asynchronous functionality, and route handling.
 
 
-## Screenshots
+### Screenshots
 
 <img width="1397" alt="Screen Shot 2019-08-27 at 2 44 10 PM" src="https://user-images.githubusercontent.com/17992280/63809190-e44c2080-c8de-11e9-893a-271be4e1a1b6.png">
 
@@ -33,7 +33,7 @@ The learning goals for this project are as follows:
 * Jon O'Drobinak ([Triplemanus](https://github.com/Triplemanus))
 * Aidan McKay ([JellyBeans1312](https://github.com/JellyBeans1312))
 
-## Learn More
+### Learn More
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
