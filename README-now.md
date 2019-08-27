@@ -1,4 +1,4 @@
-## SWAPI-Box
+# SWAPI-Box
 
 SWAPI-Box is a web application that uses the Star Wars API to tap into a “black hole” of Star Wars data. Mwahaha.
 
