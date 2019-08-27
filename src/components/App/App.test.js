@@ -25,7 +25,12 @@ describe ('App', () => {
     episode: 'four',
     text: 'but a chicken wang',
   }
-
+  const mockPeople = {
+    name: 'Aidan',
+    Homeworld: 'Earth',
+    Species: 'hooman',
+    Population: 'a lot'
+  }
   beforeEach(() => {
     wrapper = shallow(<App />)
   });
@@ -64,6 +69,12 @@ describe ('App', () => {
     expect(wrapper.state('filmData')).toEqual([])
     wrapper.instance().setMovie(mockMovie)
     expect(wrapper.state('filmData')).toEqual(mockMovie)
+  });
+
+  it('should set people to state when setPeople is called', () => {
+    expect(wrapper.state('peopleData')).toEqual([])
+    wrapper.instance().setPeople(mockPeople)
+    expect(wrapper.state('peopleData')).toEqual(mockPeople)
   })
 
   // describe('Routes', () => {
