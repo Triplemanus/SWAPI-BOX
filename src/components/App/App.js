@@ -41,15 +41,13 @@ export default class App extends Component {
   }
   componentDidMount() { 
       const number =  Math.floor(Math.random() * (6 - 2 + 1)) + 1
-      fetch('https://swapi.co/api/films')
-      .then(response => response.json())
+      fetchCalls.fetchMovies()
       .then(data => this.setState({
         filmData: data.results[number]
       }))
       .catch(error => this.setState({ error }))
 
-      fetch('https://swapi.co/api/people/')
-      .then(response => response.json())
+      fetchCalls.fetchCharacters()
       .then(data => fetchCalls.fetchPeople(data.results))
       .then(data => fetchCalls.fetchSpecies(data))
       .then(data => data.map( people => {
@@ -67,8 +65,7 @@ export default class App extends Component {
       .then(peopleData => this.setState({ peopleData }))
       .catch(error => this.setState({ error }))
 
-      fetch('https://swapi.co/api/planets/')
-      .then(response => response.json())
+      fetchCalls.fetchPlanets()
       .then(data => fetchCalls.fetchResidents(data.results))
       .then(data => data.map(planet => {
           const cleanData = [
@@ -84,8 +81,8 @@ export default class App extends Component {
       }))
       .then(planetData => this.setState({ planetData }))
       .catch(error => this.setState({ error }))
-      fetch('https://swapi.co/api/vehicles')
-      .then(response => response.json())
+
+      fetchCalls.fetchVehicles()
       .then(data => this.setState({
         vehicleData: data.results.map(vehicle => {
         const cleanData = [
