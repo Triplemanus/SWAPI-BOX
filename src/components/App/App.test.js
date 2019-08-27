@@ -1,21 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import App from './App';
-
-configure ({ adapter: new Adapter() });
+import { shallow } from 'enzyme'
 
 describe ('App', () => {
   let wrapper;
+  const mockFavorite = [
+    'aint',
+    'no',
+    'thang',
+    'but a',
+    'chicken',
+    'wang',
+    false
+  ];
+
   beforeEach(() => {
     wrapper = shallow(<App />)
-  });
-
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
-    ReactDOM.unmountComponentAtNode(div);
   });
 
   it('should match a snapshot', () => {
@@ -40,8 +40,12 @@ describe ('App', () => {
     expect(wrapper.state('landingPage')).toEqual(expectedValue);
   });
 
-  it('should render ', () => {
-
+  it('should add card to favorite card array when clicked', () => {
+    expect(wrapper.state('favoriteCards').length).toEqual(0)
+    wrapper.instance().updateFavoriteCard(mockFavorite)
+    expect(wrapper.state('favoriteCards')).toEqual([mockFavorite])
+    wrapper.instance().updateFavoriteCard(mockFavorite)
+    expect(wrapper.state('favoriteCards').length).toEqual(0)
   });
 });
 
