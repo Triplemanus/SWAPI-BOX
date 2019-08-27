@@ -5,6 +5,7 @@ import CardContainer from '../CardContainer/CardContainer';
 import { Link, Route, Switch } from 'react-router-dom';
 import { NotFound } from '../NotFound/NotFound'
 import { Home } from '../Home/Home'
+import fetchCalls from '../../apiCalls/apiCalls'
 
 export default class App extends Component {
   constructor() {
@@ -39,19 +40,19 @@ export default class App extends Component {
     } 
   }
   componentDidMount() { 
-    const number =  Math.floor(Math.random() * (6 - 2 + 1)) + 1
-    fetch('https://swapi.co/api/films')
-    .then(response => response.json())
-    .then(data => this.setState({
-      filmData: data.results[number]
-    }))
-    .catch(error => this.setState({ error }))
+      const number =  Math.floor(Math.random() * (6 - 2 + 1)) + 1
+      fetch('https://swapi.co/api/films')
+      .then(response => response.json())
+      .then(data => this.setState({
+        filmData: data.results[number]
+      }))
+      .catch(error => this.setState({ error }))
 
-    fetch('https://swapi.co/api/people/')
-     .then(response => response.json())
-     .then(data => this.fetchPeople(data.results))
-     .then(data => this.fetchSpecies(data))
-     .then(data => data.map( people => {
+      fetch('https://swapi.co/api/people/')
+      .then(response => response.json())
+      .then(data => fetchCalls.fetchPeople(data.results))
+      .then(data => fetchCalls.fetchSpecies(data))
+      .then(data => data.map( people => {
         const cleanData = [
           people.name,
           `Homeworld: ${people.homeworld}`,
@@ -62,14 +63,14 @@ export default class App extends Component {
           false
         ]
         return cleanData
-     }))
-     .then(peopleData => this.setState({ peopleData }))
-     .catch(error => this.setState({ error }))
+      }))
+      .then(peopleData => this.setState({ peopleData }))
+      .catch(error => this.setState({ error }))
 
-    fetch('https://swapi.co/api/planets/')
-    .then(response => response.json())
-    .then(data => this.fetchResidents(data.results))
-    .then(data => data.map(planet => {
+      fetch('https://swapi.co/api/planets/')
+      .then(response => response.json())
+      .then(data => fetchCalls.fetchResidents(data.results))
+      .then(data => data.map(planet => {
           const cleanData = [
             planet.name,
             `Terrain: ${planet.terrain}`,
@@ -80,14 +81,13 @@ export default class App extends Component {
                false
           ]
           return cleanData
-    }))
-    .then(planetData => this.setState({ planetData }))
-    .catch(error => this.setState({ error }))
-
-    fetch('https://swapi.co/api/vehicles')
-    .then(response => response.json())
-    .then(data => this.setState({
-      vehicleData: data.results.map(vehicle => {
+      }))
+      .then(planetData => this.setState({ planetData }))
+      .catch(error => this.setState({ error }))
+      fetch('https://swapi.co/api/vehicles')
+      .then(response => response.json())
+      .then(data => this.setState({
+        vehicleData: data.results.map(vehicle => {
         const cleanData = [
           vehicle.name,
           `Model: ${vehicle.model}`,
@@ -98,60 +98,12 @@ export default class App extends Component {
           false
         ]
         return cleanData
-      })
-    }))
-    .catch(error => this.setState({ error }))
-  }
-
-  fetchPeople = (people) => {
-    const promises = people.map(person => {
-      return fetch(person.homeworld)
-        .then(response => response.json())
-        .then(data => ({
-          homeworld: data.name,
-          population: data.population,
-          name: person.name,
-          species: person.species
-         }))
-        .catch(error => console.log(error));
-    });
-    return Promise.all(promises);
-  };
-
-
- fetchSpecies = (people) => {
-  const promises = people.map(person => {
-    return fetch(person.species)
-      .then(response => response.json())
-      .then(data => ({
-        ...person,
-        id: person.created,
-        species: data.name
+        })
       }))
-      .catch(error => console.log(error));
-  });
-  return Promise.all(promises);
-};
-
-fetchResidents = (planets) => {
-  const allPlanets = planets.map(planet => {
-    let res = [];
-    planet.residents.map(resident => {
-      return fetch(resident)
-      .then(response => response.json())
-      .then(data => res.push(data.name))
       .catch(error => this.setState({ error }))
-    });
-    return {
-      name: planet.name,
-      terrain: planet.terrain,
-      population: planet.population,
-      climate: planet.climate,
-      residents: res
-    }
-  });
-  return allPlanets
-};
+
+
+  }
 
   render () {
    const { filmData, peopleData, planetData, vehicleData, favoriteCards, landingPage} = this.state;
