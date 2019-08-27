@@ -1,4 +1,44 @@
 const fetchCalls = {
+  fetchMovies: () => {
+    return fetch('https://swapi.co/api/films')
+    .then(response => {
+      if(!response.ok) {
+        throw Error('there was a problem fetching your data')
+      }
+      return response.json()
+    })
+  },
+
+  fetchCharacters: () => {
+    return fetch('https://swapi.co/api/people/')
+    .then(response => {
+      if(!response.ok) {
+        throw Error('there was a problem fetching your data')
+      }
+      return response.json()
+    })
+  },
+
+  fetchPlanets: () => {
+    return fetch('https://swapi.co/api/planets/')
+    .then(response => {
+      if(!response.ok) {
+        throw Error('there was a problem fetching your data')
+      }
+      return response.json()
+    })
+  },
+
+  fetchVehicles: () => {
+    return fetch('https://swapi.co/api/vehicles')
+    .then(response => {
+      if(!response.ok) {
+        throw Error('there was a problem fetching your data')
+      }
+      return response.json()
+    })
+  },
+
   fetchPeople: (people) => {
     const promises = people.map(person => {
       return fetch(person.homeworld)
