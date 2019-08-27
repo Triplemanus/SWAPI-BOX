@@ -7,7 +7,7 @@ import { NotFound } from '../NotFound/NotFound'
 import { Home } from '../Home/Home'
 import fetchCalls from '../../apiCalls/apiCalls'
 import cleaner from '../../cleanData/cleanData'
-
+import loader from '../../assets/loading.gif' 
 export default class App extends Component {
   constructor() {
     super();
@@ -88,7 +88,7 @@ export default class App extends Component {
     return (
     
       <main>
-        {landingPage && 
+        {landingPage && filmData.length !== 0 && 
           <OpeningCrawl 
           title={filmData.title} 
           date={filmData.release_date}
@@ -96,6 +96,7 @@ export default class App extends Component {
           text={filmData.opening_crawl} 
           hideLanding={this.hideLanding} />
         }
+        {filmData.length === 0 && <img src={loader} className='loader'alt='Loading...'/>}
         {!landingPage && 
         <>
         <section className='idk-change-later'>
