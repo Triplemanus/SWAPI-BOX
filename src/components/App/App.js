@@ -55,22 +55,11 @@ export default class App extends Component {
       .then(peopleData => this.setState({ peopleData }))
       .catch(error => this.setState({ error }))
 
-      // fetchCalls.fetchPlanets()
-      // .then(data => fetchCalls.fetchResidents(data.results))
-      // .then(data => data.map(planet => {
-      //     const cleanData = [
-      //       planet.name,
-      //       `Terrain: ${planet.terrain}`,
-      //       `Population: ${planet.population}`,
-      //       `Climate: ${planet.climate}`,
-      //       `Residents: ${planet.residents}`,
-      //          planet.created,
-      //          false
-      //     ]
-      //     return cleanData
-      // }))
-      // .then(planetData => this.setState({ planetData }))
-      // .catch(error => this.setState({ error }))
+      fetchCalls.fetchPlanets()
+      .then(data => fetchCalls.fetchResidents(data.results))
+      .then(data => cleaner.cleanPlanets(data))
+      .then(planetData => this.setState({ planetData }))
+      .catch(error => this.setState({ error }))
 
       // fetchCalls.fetchVehicles()
       // .then(data => this.setState({

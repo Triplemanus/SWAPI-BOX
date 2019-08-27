@@ -15,7 +15,18 @@ const cleaner = {
   },
 
   cleanPlanets: (planets) => {
-
+    return planets.map(planet => {
+      const cleanData = [
+        planet.name,
+        `Terrain: ${planet.terrain}`,
+        `Population: ${planet.population}`,
+        `Climate: ${planet.climate}`,
+        `Residents: ${planet.residents}`,
+        planet.created,
+        false
+      ]
+      return cleanData
+  })
   },
 
   cleanVechicles: (vehicles) => {
