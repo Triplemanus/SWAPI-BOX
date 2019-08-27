@@ -26,11 +26,22 @@ const cleaner = {
         false
       ]
       return cleanData
-  })
+    })
   },
 
-  cleanVechicles: (vehicles) => {
-
+  cleanVehicles: (vehicles) => {
+    return vehicles.results.map(vehicle => {
+      const cleanData = [
+        vehicle.name,
+        `Model: ${vehicle.model}`,
+        `Class: ${vehicle.vehicle_class}`,
+        `Passengers: ${vehicle.passengers}`, 
+        null,
+        vehicle.created,
+        false
+      ]
+      return cleanData
+    })
   }
 }
 

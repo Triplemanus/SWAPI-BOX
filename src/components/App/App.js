@@ -61,24 +61,10 @@ export default class App extends Component {
       .then(planetData => this.setState({ planetData }))
       .catch(error => this.setState({ error }))
 
-      // fetchCalls.fetchVehicles()
-      // .then(data => this.setState({
-      //   vehicleData: data.results.map(vehicle => {
-      //   const cleanData = [
-      //     vehicle.name,
-      //     `Model: ${vehicle.model}`,
-      //     `Class: ${vehicle.vehicle_class}`,
-      //     `Passengers: ${vehicle.passengers}`, 
-      //     null,
-      //     vehicle.created,
-      //     false
-      //   ]
-      //   return cleanData
-      //   })
-      // }))
-      // .catch(error => this.setState({ error }))
-
-
+      fetchCalls.fetchVehicles()
+      .then(data => cleaner.cleanVehicles(data))
+      .then(vehicleData => this.setState({ vehicleData }))
+      .catch(error => this.setState({ error }))
   }
 
   render () {
