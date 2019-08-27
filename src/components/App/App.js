@@ -127,7 +127,7 @@ export default class App extends Component {
             <Route exact path='/people' render={() => <CardContainer data={peopleData} favoriteStatus={this.updateFavoriteCard} />}/>
             <Route exact path='/planets' render={() => <CardContainer data={planetData} favoriteStatus={this.updateFavoriteCard} />}/>
             <Route exact path='/vehicles' render={() => <CardContainer data={vehicleData} favoriteStatus={this.updateFavoriteCard} />}/>
-            <Route exact path='/favorites' render={() => <CardContainer data={favoriteCards} favoriteStatus={this.updateFavoriteCard} />}/>
+            <Route exact path='/favorites' render={() => <CardContainer data={favoriteCards} favoriteCards={this.state.favoriteCards} favoriteStatus={this.updateFavoriteCard} />}/>
             <Route component={NotFound} />
           </Switch>
         </section>
