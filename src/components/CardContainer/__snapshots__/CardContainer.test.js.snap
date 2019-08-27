@@ -1,13 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-<<<<<<< HEAD
 exports[`CardContainer should match snapshot 1`] = `
 <section
   className="card-components"
 >
   <Card
     datum="somewhere"
-    key="e"
+    key="h"
   />
   <Card
     datum="over"
@@ -17,20 +16,17 @@ exports[`CardContainer should match snapshot 1`] = `
   />
   <Card
     datum="rainbow"
-    key="w"
+    key="o"
   />
   <Card
     datum="stars"
   />
   <Card
     datum="something"
-    key="i"
+    key="h"
   />
   <Card
     datum="words"
   />
 </section>
 `;
-=======
-exports[`CardContainer should match a snapshot 1`] = `undefined`;
->>>>>>> more-testing

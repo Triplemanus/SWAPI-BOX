@@ -1,19 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-<<<<<<< HEAD
 exports[`Card should match snapshot 1`] = `
 <article
   className="card"
 >
   <div
-    className="card_content"
+    class="card-title"
   >
     <h3>
       hello
     </h3>
-    <button>
-      Favorite me!
-    </button>
+    <img
+      alt=""
+      class="star-card-button"
+      onClick={[Function]}
+      src="star.svg"
+    />
+  </div>
+  <div
+    className="card_content"
+  >
     <p>
       there
     </p>
@@ -29,6 +35,3 @@ exports[`Card should match snapshot 1`] = `
   </div>
 </article>
 `;
-=======
-exports[`Card should match a snapshot 1`] = `undefined`;
->>>>>>> more-testing
