@@ -6,6 +6,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import { NotFound } from '../NotFound/NotFound'
 import { Home } from '../Home/Home'
 import fetchCalls from '../../apiCalls/apiCalls'
+import cleaner from '../../cleanData/cleanData'
 
 export default class App extends Component {
   constructor() {
