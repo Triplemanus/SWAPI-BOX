@@ -55,11 +55,13 @@ export default class App extends Component {
       .then(peopleData => this.setState({ peopleData }))
       .catch(error => this.setState({ error }))
 
+
       fetchCalls.fetchPlanets()
       .then(data => fetchCalls.fetchResidents(data.results))
       .then(data => cleaner.cleanPlanets(data))
       .then(planetData => this.setState({ planetData }))
       .catch(error => this.setState({ error }))
+
 
       fetchCalls.fetchVehicles()
       .then(data => cleaner.cleanVehicles(data))
@@ -68,7 +70,7 @@ export default class App extends Component {
   }
 
   render () {
-   const { filmData, peopleData, planetData, vehicleData, favoriteCards, landingPage} = this.state;
+    const { filmData, peopleData, planetData, vehicleData, favoriteCards, landingPage} = this.state;
     return (
     
       <main>
@@ -117,7 +119,7 @@ export default class App extends Component {
         </>
         }
       </main>
-      )
+    )
   }  
 }
 
