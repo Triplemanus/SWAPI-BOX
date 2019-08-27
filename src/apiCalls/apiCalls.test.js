@@ -6,6 +6,11 @@ describe('apiCalls', () => {
       ok: true,
       json: () => Promise.resolve()
     }))
-  })
+  });
 
-})
+  it('should get movies', async () => {
+    const url = 'https://swapi.co/api/films'
+    await fetchCalls.fetchMovies()
+    expect(window.fetch).toHaveBeenCalledWith(url)
+  });
+});
