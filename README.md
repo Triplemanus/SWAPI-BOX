@@ -20,6 +20,10 @@ The learning goals for this project are as follows:
 - Use propTypes for every component receiving props.
 - Write tests for React components, asynchronous functionality, and route handling.
 
+### Project Management
+
+On this project, we utilized the Trello project management tool to plan out the effort when our project started and continued to update our project as we progressed. We also utilized the Issues function in gitHub to keep track of problems that arose during development that we didn't have time to fix and/or ideas for additional improvements that we would like to implement at a future time. 
+
 
 ### Screenshots
 
